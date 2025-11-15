@@ -1,51 +1,88 @@
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Main {
-    public class LinkedStack<T>{// generic LS implement
-        private class Node{
-            T data;// takes Data as input
+    public static class LinkedQueue<T> {//empty queue
+        private class Node {// empty list
+            T data;
             Node next;
             Node(T data){
-                this.data = data;//instantiating
-                this.next = null;
+                this.data=data;
+                this.next=null;
             }
+
         }
-        private Node top;
+        private Node head;// uses head tail and size
+        private Node tail;
         private int size;
 
-        public LinkedStack(){
-            top = null;
+        public LinkedQueue(){
+            head=tail=null;
             size=0;
         }
-        public void push(T data) {
-            Node newNode = new Node(data);// makes new node
-            newNode.next = top;// add new Node assign it to the top NN always top
-            top = newNode;// assigns new node as top
-            size++;//increases size by 1
-        }
-        public T pop() {//no param for pop it is showing cur top then removing it
-            if (top == null) {// if empty stop
-                throw new RuntimeException("Stack Empty");
+        public void enqueue(T data){// queue adds from the back
+            Node newNode=new Node(data);//makes node
+            if(tail!=null){//if not empty
+                tail.next=newNode;//adds new data to end
+                tail=newNode;//makes newest data back of queue(line)
+            } else{//if list is empty front is the same as back
+                head=newNode;
+                tail=newNode;
             }
-            T data = top.data;//making sure you are at top
-            top=top.next;//going down the stack
-            size--;//decreases by 1
-            return data;// returning old top which is data
+            size++;
         }
-        public void psh(T data){
-            Node newNode= new Node(data);
-            newNode.next=top;
-            top=newNode;
+        public T dequeue() {
+            if (head == null) {//if queue empty
+                throw new RuntimeException("Queue is empty");
+            }
+            T dataremoved = head.data;//making sure we are mpving head
+            head = head.next;//assigning new head
+            if(head==null){
+                tail=null;
+            }
+            size--;
+            return dataremoved;
+        }
+        public void enqeue(T data){
+            Node newNode=new Node(data);
+            if(tail!=null) {
+                tail.next = newNode;
+                tail = newNode;
+            }
+            if (head==null){
+                head=tail;
+            }
             size++;
 
         }
-
-        public T pp(){
-            if(top==null){
-                throw new RuntimeException("Stack Empty");
+        public T dequeu(){
+            if (head==null) {
+                tail=null;
+                throw new RuntimeException("Queue is empty");
             }
-            T data= top.data;
-            top=top.next;
+            T dataremoved=head.data;
+            head=head.next;
+            size--;
+            return dataremoved;
+        }
+
+        public void enq(T data){
+            Node newNode=new Node(data);
+            if(tail!=null){
+                newNode.next=tail;
+                tail=newNode;
+            }
+            if(head==null){
+                head=tail;
+            }
+        }
+        public T deq(){
+            if (head==null) {
+                tail=null;
+                throw new RuntimeException("Queue is empty");
+            }
+            T data=head.data;
+            head=head.next;
             size--;
             return data;
         }
@@ -53,5 +90,7 @@ public class Main {
 
 
     }
+
+
 
 }

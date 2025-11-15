@@ -1,19 +1,25 @@
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
-public class Tester {
+public class Tester extends Main {
+
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<>();
-        System.out.println(stack);
-        System.out.print(stack.push(4));
-        System.out.println(stack);
-        System.out.print(stack.push(3));
-        System.out.println(stack);
-        System.out.print(stack.push(2));
-        System.out.println(stack);
+        Main.LinkedQueue<Integer> queue = new LinkedQueue<>();
 
-        System.out.println(stack.pop());
-        System.out.println(stack);
-        System.out.println(stack.pop());
-        System.out.println(stack);
+        System.out.println(queue);
+        queue.enqueue(10);
+        System.out.println(queue);
+        queue.enqueue(20);
+        System.out.println(queue);
+        queue.enqueue(30);
+        System.out.println(queue);
+        queue.enqueue(10);
+        System.out.println(queue);
+        queue.enqueue(20);
+        System.out.println(queue);
+        queue.dequeue();
+        System.out.println(queue);
+
+
     }
 }
