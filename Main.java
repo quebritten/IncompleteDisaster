@@ -1,23 +1,62 @@
-
-import java.util.Scanner;
-
 public class Main {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Spaces will be removed on input");
-        System.out.print("Enter an infix expression: ");
-        String input = scanner.nextLine();
-        String infix = input.replaceAll(" ", "");//gets rid of empty spaces in input to simplify processing
+    public class Node{
+        int value;//value in notes to make more sense
+        Node left;//remember how it is set up
+        Node right;//nodes left to right root middle
+        Node(int value){
+            this.value = value;
+        }
 
+        public class binaryTree{
+            Node root;
+        }
+        void preorder(Node node){
+            if(node==null){
+                return;
+            }
+            System.out.print(node.value+" ");//node not data for all
+            preorder(node.left);//node not data
+            preorder(node.right);
+        }
 
+        void postorder(Node node){
+            if(node==null){
+                return;
+            }
+            postorder(node.left);
+            postorder(node.right);
+            System.out.print(node.value+" ");
+        }
+    }
+    public class binaryTree{
+        Node root;
+    }
+    public void preOrder(Node node){
+        if(node==null){
+            return;
+        }
+        System.out.print(node.value+"");
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+    public void postOrder(Node node){
+        if(node==null){
+            return;
+        }
+        postOrder(node.left);
+        postOrder(node.right);
+        System.out.print(node.value+"");
 
-        String postfix = LinkedStack.InfixToPostfixEvaluator.infixToPostfix(infix);
-        int result = LinkedStack.InfixToPostfixEvaluator.evaluatePostfix(postfix);
-
-        System.out.println("Infix Expression:   " + infix);
-        System.out.println("Postfix Expression: " + postfix);
-        System.out.println("Result:             " + result);
-// test inputs to copy for option 1: (((1+2)-(3-4))/(6-5)) and 2 * 4 - 2 ^ 2 ^ 1
-
+    }
+    public class binraryTree{
+        Node root;
+    }
+    public void inorder(Node node){
+        if(node==null){
+            return;
+        }
+        inorder(node.left);
+        System.out.print(node.value+"");
+        inorder(node.right);
     }
 }
