@@ -1,2 +1,2 @@
 # IncompleteDisaster
-Personal learning
+Personal learning mostly algorithm implements
